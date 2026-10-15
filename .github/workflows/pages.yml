@@ -1,0 +1,62 @@
+name: Build & deploy StockWarden to GitHub Pages
+
+on:
+  schedule:
+    # 平日台灣時間 18:00 (UTC 10:00)，盤後法人資料多已公告
+    - cron: "0 10 * * 1-5"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Taipei
+      PYTHONIOENCODING: utf-8
+      # 選用：在 repo Settings → Secrets 設定後即會推播
+      STOCKWARDEN_TELEGRAM_BOT_TOKEN: ${{ secrets.STOCKWARDEN_TELEGRAM_BOT_TOKEN }}
+      STOCKWARDEN_TELEGRAM_CHAT_ID: ${{ secrets.STOCKWARDEN_TELEGRAM_CHAT_ID }}
+      STOCKWARDEN_LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.STOCKWARDEN_LINE_CHANNEL_ACCESS_TOKEN }}
+      STOCKWARDEN_LINE_TO: ${{ secrets.STOCKWARDEN_LINE_TO }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape & render dashboard
+        run: python stockwarden_futures_options_scraper.py --no-browser
+
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp output/stockwarden_futures_or_options_stocks.html _site/index.html
+          touch _site/.nojekyll
+          ls -la _site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -2812,6 +2812,11 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="啟動本機 HTTP 伺服器 (預設 port=8765)，開啟頁面後右上角「更新」按鈕可直接重抓資料。",
     )
+    parser.add_argument(
+        "--no-browser",
+        action="store_true",
+        help="只產生 HTML，不自動開啟瀏覽器 (GitHub Actions / 排程用)。",
+    )
     return parser.parse_args(argv)
 
 
@@ -2820,4 +2825,4 @@ if __name__ == "__main__":
     if args.serve is not None:
         run_server(int(args.serve))
     else:
-        main(open_browser=True)
+        main(open_browser=not args.no_browser)
