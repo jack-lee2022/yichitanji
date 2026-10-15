@@ -1,0 +1,2211 @@
+{
+  "updated_on": "2026-09-03",
+  "generated_at": "2026-10-01 19:36:11",
+  "codes": [
+    {
+      "code": "1303",
+      "name": "南亞",
+      "contract_code": "CA",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2002",
+      "name": "中鋼",
+      "contract_code": "CB",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2303",
+      "name": "聯電",
+      "contract_code": "CC",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2330",
+      "name": "台積電",
+      "contract_code": "CD",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2881",
+      "name": "富邦金",
+      "contract_code": "CE",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "1301",
+      "name": "台塑",
+      "contract_code": "CF",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2324",
+      "name": "仁寶",
+      "contract_code": "CG",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2409",
+      "name": "友達",
+      "contract_code": "CH",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2880",
+      "name": "華南金",
+      "contract_code": "CJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2882",
+      "name": "國泰金",
+      "contract_code": "CK",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2886",
+      "name": "兆豐金",
+      "contract_code": "CL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2887",
+      "name": "台新新光金",
+      "contract_code": "CM",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2891",
+      "name": "中信金",
+      "contract_code": "CN",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "1216",
+      "name": "統一",
+      "contract_code": "CQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1402",
+      "name": "遠東新",
+      "contract_code": "CR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1605",
+      "name": "華新",
+      "contract_code": "CS",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2323",
+      "name": "中環",
+      "contract_code": "CU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2352",
+      "name": "佳世達",
+      "contract_code": "CW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2371",
+      "name": "大同",
+      "contract_code": "CX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2408",
+      "name": "南亞科",
+      "contract_code": "CY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2603",
+      "name": "長榮",
+      "contract_code": "CZ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2609",
+      "name": "陽明",
+      "contract_code": "DA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2610",
+      "name": "華航",
+      "contract_code": "DB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2801",
+      "name": "彰銀",
+      "contract_code": "DC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2890",
+      "name": "永豐金",
+      "contract_code": "DE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1101",
+      "name": "台泥",
+      "contract_code": "DF",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "1326",
+      "name": "台化",
+      "contract_code": "DG",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2317",
+      "name": "鴻海",
+      "contract_code": "DH",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2337",
+      "name": "旺宏",
+      "contract_code": "DI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2357",
+      "name": "華碩",
+      "contract_code": "DJ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2382",
+      "name": "廣達",
+      "contract_code": "DK",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2412",
+      "name": "中華電",
+      "contract_code": "DL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2884",
+      "name": "玉山金",
+      "contract_code": "DN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2885",
+      "name": "元大金",
+      "contract_code": "DO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2892",
+      "name": "第一金",
+      "contract_code": "DP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3481",
+      "name": "群創",
+      "contract_code": "DQ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2353",
+      "name": "宏碁",
+      "contract_code": "DS",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2454",
+      "name": "聯發科",
+      "contract_code": "DV",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2915",
+      "name": "潤泰全",
+      "contract_code": "DW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3231",
+      "name": "緯創",
+      "contract_code": "DX",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "1102",
+      "name": "亞泥",
+      "contract_code": "DY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1210",
+      "name": "大成",
+      "contract_code": "DZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1312",
+      "name": "國喬",
+      "contract_code": "EE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1314",
+      "name": "中石化",
+      "contract_code": "EG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1319",
+      "name": "東陽",
+      "contract_code": "EH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1440",
+      "name": "南紡",
+      "contract_code": "EK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1504",
+      "name": "東元",
+      "contract_code": "EM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1560",
+      "name": "中砂",
+      "contract_code": "EO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1590",
+      "name": "亞德客-KY",
+      "contract_code": "EP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1718",
+      "name": "中纖",
+      "contract_code": "EY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1722",
+      "name": "台肥",
+      "contract_code": "EZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2006",
+      "name": "東和鋼鐵",
+      "contract_code": "FB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2027",
+      "name": "大成鋼",
+      "contract_code": "FE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2049",
+      "name": "上銀",
+      "contract_code": "FF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2059",
+      "name": "川湖",
+      "contract_code": "FG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2105",
+      "name": "正新",
+      "contract_code": "FK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2201",
+      "name": "裕隆",
+      "contract_code": "FN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2301",
+      "name": "光寶科",
+      "contract_code": "FQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2308",
+      "name": "台達電",
+      "contract_code": "FR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2312",
+      "name": "金寶",
+      "contract_code": "FS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2313",
+      "name": "華通",
+      "contract_code": "FT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2331",
+      "name": "精英",
+      "contract_code": "FV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2332",
+      "name": "友訊",
+      "contract_code": "FW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2340",
+      "name": "台亞",
+      "contract_code": "FY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2344",
+      "name": "華邦電",
+      "contract_code": "FZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2347",
+      "name": "聯強",
+      "contract_code": "GA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2354",
+      "name": "鴻準",
+      "contract_code": "GC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2376",
+      "name": "技嘉",
+      "contract_code": "GH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2377",
+      "name": "微星",
+      "contract_code": "GI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2379",
+      "name": "瑞昱",
+      "contract_code": "GJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2385",
+      "name": "群光",
+      "contract_code": "GK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2392",
+      "name": "正崴",
+      "contract_code": "GL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2393",
+      "name": "億光",
+      "contract_code": "GM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2401",
+      "name": "凌陽",
+      "contract_code": "GN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2404",
+      "name": "漢唐",
+      "contract_code": "GO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2449",
+      "name": "京元電子",
+      "contract_code": "GR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2455",
+      "name": "全新",
+      "contract_code": "GU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2457",
+      "name": "飛宏",
+      "contract_code": "GV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2458",
+      "name": "義隆",
+      "contract_code": "GW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2474",
+      "name": "可成",
+      "contract_code": "GX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2481",
+      "name": "強茂",
+      "contract_code": "GY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2485",
+      "name": "兆赫",
+      "contract_code": "GZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2489",
+      "name": "瑞軒",
+      "contract_code": "HA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2492",
+      "name": "華新科",
+      "contract_code": "HB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2498",
+      "name": "宏達電",
+      "contract_code": "HC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2515",
+      "name": "中工",
+      "contract_code": "HH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2520",
+      "name": "冠德",
+      "contract_code": "HI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2542",
+      "name": "興富發",
+      "contract_code": "HL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2548",
+      "name": "華固",
+      "contract_code": "HO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2605",
+      "name": "新興",
+      "contract_code": "HQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2618",
+      "name": "長榮航",
+      "contract_code": "HS",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2834",
+      "name": "臺企銀",
+      "contract_code": "IA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2913",
+      "name": "農林",
+      "contract_code": "IH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3006",
+      "name": "晶豪科",
+      "contract_code": "II",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3008",
+      "name": "大立光",
+      "contract_code": "IJ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "3019",
+      "name": "亞光",
+      "contract_code": "IM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3034",
+      "name": "聯詠",
+      "contract_code": "IO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3035",
+      "name": "智原",
+      "contract_code": "IP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3036",
+      "name": "文曄",
+      "contract_code": "IQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3037",
+      "name": "欣興",
+      "contract_code": "IR",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "3042",
+      "name": "晶技",
+      "contract_code": "IT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3189",
+      "name": "景碩",
+      "contract_code": "IX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3376",
+      "name": "新日興",
+      "contract_code": "IY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3380",
+      "name": "明泰",
+      "contract_code": "IZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3443",
+      "name": "創意",
+      "contract_code": "JB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3533",
+      "name": "嘉澤",
+      "contract_code": "JF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3653",
+      "name": "健策",
+      "contract_code": "JM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3673",
+      "name": "TPK-KY",
+      "contract_code": "JN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3702",
+      "name": "大聯大",
+      "contract_code": "JP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4938",
+      "name": "和碩",
+      "contract_code": "JS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5534",
+      "name": "長虹",
+      "contract_code": "JW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6005",
+      "name": "群益證",
+      "contract_code": "JX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6153",
+      "name": "嘉聯益",
+      "contract_code": "JZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6176",
+      "name": "瑞儀",
+      "contract_code": "KA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6213",
+      "name": "聯茂",
+      "contract_code": "KB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6239",
+      "name": "力成",
+      "contract_code": "KC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6271",
+      "name": "同欣電",
+      "contract_code": "KD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6278",
+      "name": "台表科",
+      "contract_code": "KE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6282",
+      "name": "康舒",
+      "contract_code": "KF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6285",
+      "name": "啟碁",
+      "contract_code": "KG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8039",
+      "name": "台虹",
+      "contract_code": "KI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8163",
+      "name": "達方",
+      "contract_code": "KK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9904",
+      "name": "寶成",
+      "contract_code": "KL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9939",
+      "name": "宏全",
+      "contract_code": "KO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9945",
+      "name": "潤泰新",
+      "contract_code": "KP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1477",
+      "name": "聚陽",
+      "contract_code": "KS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1802",
+      "name": "台玻",
+      "contract_code": "KU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2328",
+      "name": "廣宇",
+      "contract_code": "KW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3044",
+      "name": "健鼎",
+      "contract_code": "LB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3045",
+      "name": "台灣大",
+      "contract_code": "LC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3406",
+      "name": "玉晶光",
+      "contract_code": "LE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6269",
+      "name": "台郡",
+      "contract_code": "LI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9914",
+      "name": "美利達",
+      "contract_code": "LM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5880",
+      "name": "合庫金",
+      "contract_code": "LO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2356",
+      "name": "英業達",
+      "contract_code": "LQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2883",
+      "name": "凱基金",
+      "contract_code": "LR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4904",
+      "name": "遠傳",
+      "contract_code": "LT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4958",
+      "name": "臻鼎-KY",
+      "contract_code": "LU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5871",
+      "name": "中租-KY",
+      "contract_code": "LV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1476",
+      "name": "儒鴻",
+      "contract_code": "LW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2327",
+      "name": "國巨*",
+      "contract_code": "LX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8046",
+      "name": "南電",
+      "contract_code": "LY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2355",
+      "name": "敬鵬",
+      "contract_code": "MB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2360",
+      "name": "致茂",
+      "contract_code": "MJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2439",
+      "name": "美律",
+      "contract_code": "MK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6257",
+      "name": "矽格",
+      "contract_code": "MQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9938",
+      "name": "百和",
+      "contract_code": "MV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1565",
+      "name": "精華",
+      "contract_code": "MY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3105",
+      "name": "穩懋",
+      "contract_code": "NA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3152",
+      "name": "璟德",
+      "contract_code": "NB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3211",
+      "name": "順達",
+      "contract_code": "NC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3260",
+      "name": "威剛",
+      "contract_code": "ND",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3264",
+      "name": "欣銓",
+      "contract_code": "NE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3691",
+      "name": "碩禾",
+      "contract_code": "NG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4123",
+      "name": "晟德",
+      "contract_code": "NI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5009",
+      "name": "榮剛",
+      "contract_code": "NJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5347",
+      "name": "世界",
+      "contract_code": "NL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5483",
+      "name": "中美晶",
+      "contract_code": "NO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6121",
+      "name": "新普",
+      "contract_code": "NQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6147",
+      "name": "頎邦",
+      "contract_code": "NS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8044",
+      "name": "網家",
+      "contract_code": "NU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8069",
+      "name": "元太",
+      "contract_code": "NV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8299",
+      "name": "群聯",
+      "contract_code": "NW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "0050",
+      "name": "元大台灣50ETF",
+      "contract_code": "NY",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "006205",
+      "name": "富邦上証ETF",
+      "contract_code": "OA",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "006206",
+      "name": "元大上證50ETF",
+      "contract_code": "OB",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2231",
+      "name": "為升",
+      "contract_code": "OD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6116",
+      "name": "彩晶",
+      "contract_code": "OE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6279",
+      "name": "胡連",
+      "contract_code": "OH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00636",
+      "name": "國泰中國A50ETF",
+      "contract_code": "OJ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "00639",
+      "name": "富邦深100ETF",
+      "contract_code": "OK",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "3008",
+      "name": "大立光",
+      "contract_code": "OL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1565",
+      "name": "精華",
+      "contract_code": "OM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00643",
+      "name": "群益深証中小ETF",
+      "contract_code": "OO",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "2345",
+      "name": "智邦",
+      "contract_code": "OP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6414",
+      "name": "樺漢",
+      "contract_code": "OQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1536",
+      "name": "和大",
+      "contract_code": "OR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1909",
+      "name": "榮成",
+      "contract_code": "OS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3081",
+      "name": "聯亞",
+      "contract_code": "OT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3552",
+      "name": "同致",
+      "contract_code": "OU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6274",
+      "name": "台燿",
+      "contract_code": "OV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6488",
+      "name": "環球晶",
+      "contract_code": "OW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6510",
+      "name": "精測",
+      "contract_code": "OX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6510",
+      "name": "精測",
+      "contract_code": "OY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3711",
+      "name": "日月光投控",
+      "contract_code": "OZ",
+      "has_futures": true,
+      "has_options": true
+    },
+    {
+      "code": "3227",
+      "name": "原相",
+      "contract_code": "PA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6488",
+      "name": "環球晶",
+      "contract_code": "PB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4162",
+      "name": "智擎",
+      "contract_code": "PC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4736",
+      "name": "泰博",
+      "contract_code": "PD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5425",
+      "name": "台半",
+      "contract_code": "PE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "0056",
+      "name": "元大高股息ETF",
+      "contract_code": "PF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2633",
+      "name": "台灣高鐵",
+      "contract_code": "PG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5269",
+      "name": "祥碩",
+      "contract_code": "PH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3529",
+      "name": "力旺",
+      "contract_code": "PI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2383",
+      "name": "台光電",
+      "contract_code": "PJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6173",
+      "name": "信昌電",
+      "contract_code": "PK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6182",
+      "name": "合晶",
+      "contract_code": "PL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8436",
+      "name": "大江",
+      "contract_code": "PM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5269",
+      "name": "祥碩",
+      "contract_code": "PN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5457",
+      "name": "宣德",
+      "contract_code": "PP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8358",
+      "name": "金居",
+      "contract_code": "PQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8086",
+      "name": "宏捷科",
+      "contract_code": "PR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3706",
+      "name": "神達",
+      "contract_code": "PS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3324",
+      "name": "雙鴻",
+      "contract_code": "PT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2454",
+      "name": "聯發科",
+      "contract_code": "PU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6669",
+      "name": "緯穎",
+      "contract_code": "PV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6669",
+      "name": "緯穎",
+      "contract_code": "PW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3293",
+      "name": "鈊象",
+      "contract_code": "PX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3293",
+      "name": "鈊象",
+      "contract_code": "PY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5274",
+      "name": "信驊",
+      "contract_code": "PZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5274",
+      "name": "信驊",
+      "contract_code": "QA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3714",
+      "name": "富采",
+      "contract_code": "QB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2606",
+      "name": "裕民",
+      "contract_code": "QC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3532",
+      "name": "台勝科",
+      "contract_code": "QD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2327",
+      "name": "國巨*",
+      "contract_code": "QE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2330",
+      "name": "台積電",
+      "contract_code": "QF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2379",
+      "name": "瑞昱",
+      "contract_code": "QG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3034",
+      "name": "聯詠",
+      "contract_code": "QH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3105",
+      "name": "穩懋",
+      "contract_code": "QI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3406",
+      "name": "玉晶光",
+      "contract_code": "QJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1907",
+      "name": "永豐餘",
+      "contract_code": "QK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3374",
+      "name": "精材",
+      "contract_code": "QL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2049",
+      "name": "上銀",
+      "contract_code": "QM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8299",
+      "name": "群聯",
+      "contract_code": "QN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1717",
+      "name": "長興",
+      "contract_code": "QO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1904",
+      "name": "正隆",
+      "contract_code": "QP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3078",
+      "name": "僑威",
+      "contract_code": "QQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2357",
+      "name": "華碩",
+      "contract_code": "QR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8046",
+      "name": "南電",
+      "contract_code": "QS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2441",
+      "name": "超豐",
+      "contract_code": "QT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8150",
+      "name": "南茂",
+      "contract_code": "QU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2338",
+      "name": "光罩",
+      "contract_code": "QV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2388",
+      "name": "威盛",
+      "contract_code": "QW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2615",
+      "name": "萬海",
+      "contract_code": "QX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6547",
+      "name": "高端疫苗",
+      "contract_code": "QY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6770",
+      "name": "力積電",
+      "contract_code": "QZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3017",
+      "name": "奇鋐",
+      "contract_code": "RA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5388",
+      "name": "中磊",
+      "contract_code": "RB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2634",
+      "name": "漢翔",
+      "contract_code": "RC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4128",
+      "name": "中天",
+      "contract_code": "RD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4919",
+      "name": "新唐",
+      "contract_code": "RE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3533",
+      "name": "嘉澤",
+      "contract_code": "RF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3653",
+      "name": "健策",
+      "contract_code": "RG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00878",
+      "name": "國泰永續高股息ETF",
+      "contract_code": "RI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1609",
+      "name": "大亞",
+      "contract_code": "RJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2368",
+      "name": "金像電",
+      "contract_code": "RK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6443",
+      "name": "元晶",
+      "contract_code": "RL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "4743",
+      "name": "合一",
+      "contract_code": "RN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6245",
+      "name": "立端",
+      "contract_code": "RO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5904",
+      "name": "寶雅*",
+      "contract_code": "RP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5904",
+      "name": "寶雅*",
+      "contract_code": "RR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3529",
+      "name": "力旺",
+      "contract_code": "RS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9958",
+      "name": "世紀鋼",
+      "contract_code": "RU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2308",
+      "name": "台達電",
+      "contract_code": "RV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3443",
+      "name": "創意",
+      "contract_code": "RW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00885",
+      "name": "富邦越南ETF",
+      "contract_code": "RX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00923",
+      "name": "群益台ESG低碳50ETF",
+      "contract_code": "RY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1795",
+      "name": "美時",
+      "contract_code": "SA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1905",
+      "name": "華紙",
+      "contract_code": "SB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1477",
+      "name": "聚陽",
+      "contract_code": "SC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1513",
+      "name": "中興電",
+      "contract_code": "SD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2345",
+      "name": "智邦",
+      "contract_code": "SE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2383",
+      "name": "台光電",
+      "contract_code": "SF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00893",
+      "name": "國泰智能電動車ETF",
+      "contract_code": "SG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3005",
+      "name": "神基",
+      "contract_code": "SJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8112",
+      "name": "至上",
+      "contract_code": "SK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2376",
+      "name": "技嘉",
+      "contract_code": "SL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00919",
+      "name": "群益台灣精選高息ETF",
+      "contract_code": "SM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00929",
+      "name": "復華台灣科技優息ETF",
+      "contract_code": "SN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "0050",
+      "name": "元大台灣50ETF",
+      "contract_code": "SR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "0056",
+      "name": "元大高股息ETF",
+      "contract_code": "SS",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00940",
+      "name": "元大台灣價值高息ETF",
+      "contract_code": "SU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2059",
+      "name": "川湖",
+      "contract_code": "SV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "9958",
+      "name": "世紀鋼",
+      "contract_code": "SW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3680",
+      "name": "家登",
+      "contract_code": "SY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3680",
+      "name": "家登",
+      "contract_code": "SZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1503",
+      "name": "士電",
+      "contract_code": "UA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6139",
+      "name": "亞翔",
+      "contract_code": "UB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6188",
+      "name": "廣明",
+      "contract_code": "UC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "5876",
+      "name": "上海商銀",
+      "contract_code": "UE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6505",
+      "name": "台塑化",
+      "contract_code": "UF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6526",
+      "name": "達發",
+      "contract_code": "UG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3017",
+      "name": "奇鋐",
+      "contract_code": "UH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6526",
+      "name": "達發",
+      "contract_code": "UI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3324",
+      "name": "雙鴻",
+      "contract_code": "UL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3661",
+      "name": "世芯-KY",
+      "contract_code": "UM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3661",
+      "name": "世芯-KY",
+      "contract_code": "UO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6472",
+      "name": "保瑞",
+      "contract_code": "UP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6472",
+      "name": "保瑞",
+      "contract_code": "UQ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00757",
+      "name": "統一FANG+ETF",
+      "contract_code": "UR",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "00757",
+      "name": "統一FANG+ETF",
+      "contract_code": "US",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2486",
+      "name": "一詮",
+      "contract_code": "UT",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6757",
+      "name": "台灣虎航",
+      "contract_code": "UU",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6223",
+      "name": "旺矽",
+      "contract_code": "UV",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6223",
+      "name": "旺矽",
+      "contract_code": "UW",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2329",
+      "name": "華泰",
+      "contract_code": "UX",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6290",
+      "name": "良維",
+      "contract_code": "UY",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2404",
+      "name": "漢唐",
+      "contract_code": "UZ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1608",
+      "name": "華榮",
+      "contract_code": "VA",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2367",
+      "name": "燿華",
+      "contract_code": "VB",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2421",
+      "name": "建準",
+      "contract_code": "VC",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2360",
+      "name": "致茂",
+      "contract_code": "VD",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3665",
+      "name": "貿聯-KY",
+      "contract_code": "VE",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3665",
+      "name": "貿聯-KY",
+      "contract_code": "VF",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2368",
+      "name": "金像電",
+      "contract_code": "VG",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "0052",
+      "name": "富邦科技ETF",
+      "contract_code": "VH",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2395",
+      "name": "研華",
+      "contract_code": "VI",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3211",
+      "name": "順達",
+      "contract_code": "VJ",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "6139",
+      "name": "亞翔",
+      "contract_code": "VK",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "8932",
+      "name": "智通*",
+      "contract_code": "VL",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1519",
+      "name": "華城",
+      "contract_code": "VM",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "1519",
+      "name": "華城",
+      "contract_code": "VN",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "2449",
+      "name": "京元電子",
+      "contract_code": "VO",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3711",
+      "name": "日月光投控",
+      "contract_code": "VP",
+      "has_futures": true,
+      "has_options": false
+    },
+    {
+      "code": "3718",
+      "name": "中光電投控",
+      "contract_code": "VQ",
+      "has_futures": true,
+      "has_options": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "telegram": {
+    "enabled": false,
+    "bot_token": "填入你的 Telegram Bot Token",
+    "chat_id": "填入你的 Telegram Chat ID"
+  },
+  "line": {
+    "enabled": false,
+    "channel_access_token": "填入你的 LINE Messaging API Channel Access Token",
+    "to": "填入接收者 userId 或 groupId"
+  }
+}
