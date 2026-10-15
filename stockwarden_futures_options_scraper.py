@@ -399,100 +399,6 @@ def get_filter_button_style(view_name: str, palette: dict[str, tuple[str, str, s
 # ---------------------------------------------------------------------------
 
 
-def get_session_time_text(item: dict[str, Any]) -> str:
-    disposition = item.get("aj") or {}
-    calc_info = item.get("o") or {}
-    session_minutes = None
-    av = item.get("av") or {}
-    cc_list = av.get("cc") or []
-    if isinstance(cc_list, list):
-        for cc in cc_list:
-            cc_text = str(cc or "")
-            m = re.search(r"處置期間\s*(\d{2}/\d{2})\s*[-~到至]\s*(\d{2}/\d{2})", cc_text)
-            if m:
-                continue
-            m2 = re.search(r"約每\s*(\d+)\s*分鐘", cc_text)
-            if m2:
-                try:
-                    session_minutes = int(m2.group(1))
-                except ValueError:
-                    session_minutes = None
-                break
-    if not (isinstance(session_minutes, int) and session_minutes > 0):
-        v_aj_ah = disposition.get("ah")
-        if isinstance(v_aj_ah, int) and v_aj_ah > 0:
-            session_minutes = v_aj_ah
-    if not (isinstance(session_minutes, int) and session_minutes > 0):
-        v1 = calc_info.get("ak")
-        if isinstance(v1, int) and v1 > 0:
-            session_minutes = v1
-    if not (isinstance(session_minutes, int) and session_minutes > 0):
-        v2 = disposition.get("bb")
-        if isinstance(v2, int) and v2 > 0:
-            session_minutes = v2
-    if isinstance(session_minutes, int) and session_minutes > 0:
-        return f"{session_minutes}分盤"
-    return "-"
-
-
-def get_risk_analysis_text(item: dict[str, Any]) -> str:
-    calc_info = item.get("o") or {}
-    disposition = item.get("aj") or {}
-    av = item.get("av") or {}
-    risk_days: str | None = None
-    v1 = calc_info.get("ak")
-    if isinstance(v1, int) and v1 > 0:
-        risk_days = str(v1)
-    if not risk_days:
-        v2 = disposition.get("ah")
-        if isinstance(v2, int) and v2 > 0:
-            risk_days = str(v2)
-    if not risk_days:
-        v3 = calc_info.get("bc")
-        if isinstance(v3, int) and v3 > 0:
-            risk_days = str(v3)
-    if not risk_days:
-        v4 = disposition.get("bb")
-        if isinstance(v4, int) and v4 > 0:
-            risk_days = str(v4)
-    if not risk_days:
-        v5 = av.get("bb")
-        if isinstance(v5, int) and v5 > 0:
-            risk_days = str(v5)
-    if not risk_days:
-        return "-"
-
-    start_date = roc_date_to_date(disposition.get("bz"))
-    end_date = roc_date_to_date(disposition.get("am"))
-    today = datetime.now().date()
-
-    if start_date and end_date and start_date <= today <= end_date:
-        return f"最快 {risk_days} 日後再次處置"
-    if end_date and end_date < today:
-        return f"最快 {risk_days} 日後再次處置"
-    return f"最快 {risk_days} 日後進入處置"
-
-
-def get_condition_message(item: dict[str, Any]) -> str:
-    disposition = item.get("aj") or {}
-    av = item.get("av") or {}
-    ai_text = str(disposition.get("ai") or "").strip()
-    bx = av.get("bx") or {}
-    bx_reason = str((bx if isinstance(bx, dict) else {}).get("bu") or "").strip()
-    reason = str(disposition.get("bu") or "").strip()
-    parts: list[str] = []
-    if ai_text and ai_text not in ("None",):
-        parts.append(ai_text)
-    if reason and reason not in ("None",):
-        parts.append(f"原因：{reason}")
-    if bx_reason and bx_reason not in ("None",):
-        parts.append(f"附註：{bx_reason}")
-    extend_flag = (item.get("o") or {}).get("ar")
-    if extend_flag is True:
-        parts.append("延長處置")
-    return "\n\n".join(p for p in parts if p) if parts else "-"
-
-
 def fetch_board_data() -> dict[str, Any]:
     status, body, _ = _get_url(API_URL)
     if status != 200 or not body:
@@ -500,207 +406,96 @@ def fetch_board_data() -> dict[str, Any]:
     return json.loads(body)
 
 
-def build_board_key_maps(payload: dict[str, Any]) -> dict[str, str]:
+def decode_board_item(value: Any, schema: dict[str, str]) -> Any:
     """
-    boards.json 改版會把 2 字母 key -> value 的 schema 換掉 (aq/bm 變回 ah/bd 之類)。
-    這裡用 payload['schema'] 反查表動態建立:
-      K_HAS_FUTURES / K_HAS_OPTIONS / K_CODE / K_NAME
-      K_DISPOSITION_OBJ (disposition 子物件)
-      K_CALC_INFO_OBJ (calculation_info 子物件)
-      K_SUMMARY_OBJ (av 摘要/行情 子物件)
+    boards.json 的 key 都是混淆過的 2 字母代號 (例如 ai=disposition、n=calculation_info)，
+    而且每次改版代號都會重新排列。這裡依 payload['schema'] 把整個 item 遞迴還原成原始欄位名，
+    之後一律用欄位名取值，不再寫死代號。
     """
-    schema = payload.get("schema") or {}
-    if not isinstance(schema, dict):
-        return {}
+    if isinstance(value, dict):
+        return {schema.get(k, k): decode_board_item(v, schema) for k, v in value.items()}
+    if isinstance(value, list):
+        return [decode_board_item(v, schema) for v in value]
+    return value
 
-    rev: dict[str, str] = {str(v): k for k, v in schema.items()}
-    result: dict[str, str] = {}
 
-    def _pick(preferred_labels: list[str]) -> str | None:
-        for label in preferred_labels:
-            if label in rev:
-                return rev[label]
-        # fallback: schema 裡 value 包含該關鍵字
-        for k, v in schema.items():
-            vs = str(v or "").lower()
-            if any(lbl.lower() in vs for lbl in preferred_labels):
-                return k
+PRECOLLECTION_TEXT = {"all": "全額預收款券", "threshold": "達門檻預收款券"}
+
+
+def _disposition_state(disposition: dict[str, Any], today: date) -> str | None:
+    start = roc_date_to_date(disposition.get("start"))
+    end = roc_date_to_date(disposition.get("end"))
+    if not start or not end:
         return None
-
-    result["K_HAS_FUTURES"] = _pick(["futures", "has_futures", "期貨"]) or "ah"
-    result["K_HAS_OPTIONS"] = _pick(["option", "options", "has_option", "has_options", "選擇權"]) or "bd"
-    result["K_CODE"] = _pick(["code", "stock_code", "symbol", "代號", "股票代號"]) or "m"
-    result["K_NAME"] = _pick(["name", "company_name", "簡稱", "名稱", "股票名稱"]) or "ba"
-    # disposition / calc_info / summary 子物件：先找 schema 裡有沒有 "disposition"/"calculation_info"/"summary"
-    result["K_DISPOSITION_OBJ"] = _pick(["disposition", "disposition_info", "處置"]) or "aa"
-    result["K_CALC_INFO_OBJ"] = _pick(["calculation_info", "calc_info", "risk_info", "計算資訊"]) or "f"
-    result["K_SUMMARY_OBJ"] = _pick(["summary", "quote", "行情", "摘要", "remarks", "av"]) or "am"
-    return result
+    if today < start:
+        return "即將處置"
+    if today <= end:
+        return "處置中"
+    return "前次處置"
 
 
-# 這三個函數現在從 item 本身動態偵測 disposition/calc/summary 子物件 key (若沒傳 key_maps 就用舊版常數)
-def _resolve_objects(item: dict[str, Any], key_maps: dict[str, str] | None = None) -> tuple[dict, dict, dict]:
-    km = key_maps or {}
-    disp_key = km.get("K_DISPOSITION_OBJ") or "aa"
-    calc_key = km.get("K_CALC_INFO_OBJ") or "f"
-    sum_key = km.get("K_SUMMARY_OBJ") or "am"
-    disp = item.get(disp_key)
-    calc = item.get(calc_key)
-    summ = item.get(sum_key)
-    if not isinstance(disp, dict):
-        disp = {}
-    if not isinstance(calc, dict):
-        calc = {}
-    if not isinstance(summ, dict):
-        summ = {}
-    return disp, calc, summ
-
-
-def get_session_time_text(item: dict[str, Any], key_maps: dict[str, str] | None = None) -> str:
-    disposition, calc_info, av = _resolve_objects(item, key_maps)
-    session_minutes: int | None = None
-    cc_list = av.get("cc") or []
-    if isinstance(cc_list, list):
-        for cc in cc_list:
-            cc_text = str(cc or "")
-            m = re.search(r"處置期間\s*(\d{2}/\d{2})\s*[-~到至]\s*(\d{2}/\d{2})", cc_text)
-            if m:
-                continue
-            m2 = re.search(r"約每\s*(\d+)\s*分鐘", cc_text)
-            if m2:
-                try:
-                    session_minutes = int(m2.group(1))
-                except ValueError:
-                    session_minutes = None
-                break
-    # 掃 disposition 裡的大文本 z / bl 等，找 "每 N 分鐘"
-    if not (isinstance(session_minutes, int) and session_minutes > 0):
-        for dict_obj in (disposition, calc_info, av):
-            for v in (dict_obj or {}).values():
-                if not isinstance(v, str):
-                    continue
-                m3 = re.search(r"每\s*(\d+)\s*分\s*(?:鐘)?\s*撮", v)
-                if m3:
-                    try:
-                        session_minutes = int(m3.group(1))
-                    except ValueError:
-                        session_minutes = None
-                    break
-            if isinstance(session_minutes, int) and session_minutes > 0:
-                break
-    # f.at / aa.as：探測結果 disp/exit 都是 at=2 / as=2，猜測處置分鐘 (可能 2 分鐘)
-    if not (isinstance(session_minutes, int) and session_minutes > 0):
-        for dict_obj in (calc_info, disposition):
-            for k in ("at", "as", "ah", "aj", "bb"):
-                v = (dict_obj or {}).get(k)
-                if isinstance(v, int) and 1 <= v <= 600:
-                    # f.ab = 處置期間 5 天；f.at = 2 猜是分鐘；aa.as=2 也猜分鐘；
-                    if k in ("at", "as"):
-                        session_minutes = v
-                        break
-            if isinstance(session_minutes, int) and session_minutes > 0:
-                break
-    if isinstance(session_minutes, int) and session_minutes > 0:
-        return f"{session_minutes}分盤"
+def get_session_time_text(item: dict[str, Any]) -> str:
+    """處置中或即將處置才顯示分盤 (撮合間隔分鐘數)；前次處置已結束不顯示。"""
+    disposition = item.get("disposition") or {}
+    state = _disposition_state(disposition, datetime.now().date())
+    matching = disposition.get("matching")
+    if state in ("處置中", "即將處置") and isinstance(matching, int) and matching > 0:
+        return f"{matching}分盤"
     return "-"
 
 
-def get_risk_analysis_text(item: dict[str, Any], key_maps: dict[str, str] | None = None) -> str:
-    disposition, calc_info, av = _resolve_objects(item, key_maps)
-    risk_days: str | None = None
-    # f.ab = 5 (處置期間營業日) -> 這是處置天數，不是下次風險天數
-    # 找合理「風險天數」：av.aj = 47, av.bh = 47, av.k = 47 -> 47 天合理 (風險觀察天數)
-    for dict_obj in (av, calc_info, disposition):
-        for k in ("aj", "bh", "k", "ah", "bb", "ab", "bc"):
-            v = (dict_obj or {}).get(k)
-            if isinstance(v, int) and 1 <= v <= 180:
-                if k in ("aj", "bh", "k"):
-                    risk_days = str(v)
-                    break
-        if risk_days:
-            break
-    if not risk_days:
-        # f.bz = 5 、f.ab = 5 (處置期間天數) 當 fallback
-        for dict_obj in (calc_info, disposition):
-            for k in ("ab", "bz", "y"):
-                v = (dict_obj or {}).get(k)
-                if isinstance(v, int) and 1 <= v <= 60:
-                    risk_days = str(v)
-                    break
-            if risk_days:
-                break
-    if not risk_days:
-        return "-"
-
-    start_date = roc_date_to_date(disposition.get("bq") or disposition.get("p"))
-    end_date = roc_date_to_date(disposition.get("ad"))
-    today = datetime.now().date()
-
-    if start_date and end_date and start_date <= today <= end_date:
-        return f"最快 {risk_days} 日後再次處置"
-    if end_date and end_date < today:
-        return f"最快 {risk_days} 日後再次處置"
-    return f"最快 {risk_days} 日後進入處置"
-
-
-def get_condition_message(item: dict[str, Any], key_maps: dict[str, str] | None = None) -> str:
-    disposition, calc_info, av = _resolve_objects(item, key_maps)
-    # aa.z = 最完整大文本 (處置原因/期間/措施 全部包在一起)
-    z_text = str(disposition.get("z") or "").strip()
-    bl_text = str(disposition.get("bl") or "").strip()
-    ad_text = str(disposition.get("ad") or "").strip()
-    bq_text = str(disposition.get("bq") or "").strip()
-    p_text = str(disposition.get("p") or "").strip()
-    ab = calc_info.get("ab")
-    y = disposition.get("y")
-
+def get_risk_analysis_text(item: dict[str, Any]) -> str:
+    """StockWarden 網站上顯示的狀態標籤 (處置期間 / 豁免條件存在 / N日後出關 / 自結…)。"""
     parts: list[str] = []
-    if bl_text and bl_text not in ("None",):
-        parts.append(bl_text)
-    if isinstance(y, int) and y > 0:
-        parts.append(f"處置類型：{y} 分盤")
-    if isinstance(ab, int) and ab > 0:
-        period = f"{ab} 個營業日"
-        if p_text or bq_text or ad_text:
-            start = bq_text or p_text or ""
-            if start and ad_text:
-                period = f"{start} 至 {ad_text}（{ab} 個營業日）"
-            elif start:
-                period = f"自 {start} 起 {ab} 個營業日"
-            elif ad_text:
-                period = f"至 {ad_text} 止，共 {ab} 個營業日"
-        parts.append(f"處置期間：{period}")
-    if z_text and z_text not in ("None",):
-        parts.append(z_text)
-    # fallback: 掃 dict 裡的長字串
-    if not parts:
-        extra_texts: list[str] = []
-        for dict_obj in (disposition, av, calc_info):
-            for v in (dict_obj or {}).values():
-                if isinstance(v, str):
-                    s = v.strip()
-                    if 3 <= len(s) <= 4000:
-                        extra_texts.append(s)
-        if extra_texts:
-            seen: set[str] = set()
-            for s in extra_texts:
-                if s not in seen:
-                    parts.append(s)
-                    seen.add(s)
-    return "\n\n".join(p for p in parts if p) if parts else "-"
+    rod_days = (item.get("calculation_info") or {}).get("rod_days")
+    if isinstance(rod_days, int) and rod_days >= 0:
+        parts.append(f"最快 {rod_days} 日後進入處置")
+    tags = (item.get("last_info") or {}).get("tags") or []
+    if isinstance(tags, list):
+        parts.extend(str(t).strip() for t in tags if str(t or "").strip())
+    return " / ".join(parts) if parts else "-"
+
+
+def get_condition_message(item: dict[str, Any]) -> str:
+    parts: list[str] = []
+    disposition = item.get("disposition") or {}
+    state = _disposition_state(disposition, datetime.now().date())
+    if state:
+        detail: list[str] = []
+        if isinstance(disposition.get("days"), int):
+            detail.append(f"{disposition['days']} 個營業日")
+        if isinstance(disposition.get("matching"), int) and disposition["matching"] > 0:
+            detail.append(f"{disposition['matching']} 分盤")
+        precollection = PRECOLLECTION_TEXT.get(str(disposition.get("precollection") or ""))
+        if precollection:
+            detail.append(precollection)
+        line = f"{state}：{disposition.get('start')} 至 {disposition.get('end')}"
+        if detail:
+            line += f"（{'，'.join(detail)}）"
+        parts.append(line)
+        reason = str(disposition.get("reason") or "").strip()
+        description = str(disposition.get("description") or "").strip()
+        # description 若是公告全文 (數百字) 就不放，只留短標籤 (例如「第一次處置」)
+        if description and len(description) <= 30:
+            reason = f"{reason}（{description}）" if reason else description
+        if reason:
+            parts.append(f"處置原因：{reason}")
+    warning = item.get("warning") or {}
+    warning_text = str(warning.get("description") or "").strip()
+    if warning_text:
+        warning_date = str(warning.get("date") or "").strip()
+        parts.append(f"注意股{f'（{warning_date}）' if warning_date else ''}：{warning_text}")
+    return "\n".join(parts) if parts else "-"
 
 
 def extract_disposition_rows(payload: dict[str, Any]) -> list[dict[str, str]]:
+    """只收有股票期貨 / 選擇權的個股：boards 的 futures/option 旗標，或期交所清單內。"""
     rows: list[dict[str, str]] = []
     data = payload.get("data", {})
-    key_maps = build_board_key_maps(payload)
-    K_HF = key_maps.get("K_HAS_FUTURES", "ah")
-    K_HO = key_maps.get("K_HAS_OPTIONS", "bd")
-    K_CODE = key_maps.get("K_CODE", "m")
-    K_NAME = key_maps.get("K_NAME", "ba")
-    # 根據最新 boards 資料，ah/bd 可能全為 False，但 rod_list / disposition_list / exit_list / dt_list / weps_list
-    # 本身就已經是「有被處置/注意/發布自結」的清單，所以 filter 應改為：
-    #   ① 有 futures/options 標記 (bool)，或 ② 存在 taifex 期權清單，或 ③ 有處置子物件 aa 且有處置說明
+    schema = payload.get("schema") or {}
+    if not isinstance(schema, dict):
+        schema = {}
+
     tf_code_set: set[str] = set()
     try:
         tf = fetch_taifex_list(force_refresh=False)
@@ -711,38 +506,20 @@ def extract_disposition_rows(payload: dict[str, Any]) -> list[dict[str, str]]:
     except Exception:
         tf_code_set = set()
 
-    def _item_has_disposition(item: dict[str, Any]) -> bool:
-        # 有處置子物件且裡面有處置期間/原因/處置說明 -> 必屬於處置股
-        disp_obj = _resolve_objects(item, key_maps)[0]
-        if not disp_obj:
-            return False
-        for v in disp_obj.values():
-            if isinstance(v, str):
-                s = v.strip()
-                if 10 <= len(s) <= 4000 and any(w in s for w in ("處置", "注意", "分盤", "管制", "撮合", "營業日")):
-                    return True
-        # 有處置起始日 p / 處置迄日 ad / 處置原因文字 bl
-        for date_key in ("p", "bq", "ad"):
-            if isinstance(disp_obj.get(date_key), str) and "/" in disp_obj[date_key]:
-                return True
-        return False
-
     for list_name, group_name in GROUPS:
-        for item in data.get(list_name, []):
-            has_futures = bool(item.get(K_HF))
-            has_options = bool(item.get(K_HO))
-            stock_code = str(item.get(K_CODE, "")).strip()
+        for raw_item in data.get(list_name, []):
+            item = decode_board_item(raw_item, schema)
+            stock_code = str(item.get("code", "")).strip()
             in_taifex = bool(stock_code) and stock_code in tf_code_set
-            has_disp_obj = _item_has_disposition(item)
-            if not (has_futures or has_options or in_taifex or has_disp_obj):
+            if not (item.get("futures") or item.get("option") or in_taifex):
                 continue
             rows.append(
                 {
                     "股票代號": stock_code,
-                    "股票名稱": str(item.get(K_NAME, "")).strip(),
-                    "分盤時間": get_session_time_text(item, key_maps),
-                    "風險天數分析": get_risk_analysis_text(item, key_maps),
-                    "處置條件訊息": get_condition_message(item, key_maps),
+                    "股票名稱": str(item.get("name", "")).strip(),
+                    "分盤時間": get_session_time_text(item),
+                    "風險天數分析": get_risk_analysis_text(item),
+                    "處置條件訊息": get_condition_message(item),
                     "群組": group_name,
                 }
             )
@@ -780,7 +557,12 @@ def merge_rows_for_combined_view(rows: list[dict[str, str]]) -> list[dict[str, A
     for _, item in merged.items():
         groups = sorted(item["群組列表"], key=lambda name: group_order.get(name, 999))
         session_values = [v for v in item["分盤時間集合"] if v != "-"]
-        risk_values = [v for v in item["風險天數分析集合"] if v != "-"]
+        # 同一檔出現在多個群組時，各群組的標籤會重複 → 拆開逐個標籤去重
+        risk_values: list[str] = []
+        for v in item["風險天數分析集合"]:
+            for tag in v.split(" / "):
+                if tag != "-" and tag not in risk_values:
+                    risk_values.append(tag)
         message_values = [v for v in item["處置條件訊息集合"] if v != "-"]
         result.append(
             {
@@ -831,7 +613,7 @@ def render_disposition_html_row(row: dict[str, Any]) -> str:
         f'<td class="code-cell"><span class="stock-code">{htmlescape(stock_code)}{"".join(badges)}</span></td>'
         f"<td>{htmlescape(row['股票名稱'])}</td>"
         f'<td><span class="{sess_cls}">{htmlescape(row["分盤時間"])}</span></td>'
-        f'<td><span class="risk-text">{htmlescape(row["風險天數分析"])}</span></td>'
+        f'<td class="tags-cell"><span class="risk-text">{htmlescape(row["風險天數分析"].replace(" / ", chr(10)))}</span></td>'
         f'<td class="message-cell">{htmlescape(row["處置條件訊息"])}</td>'
         "</tr>"
     )
@@ -845,7 +627,7 @@ def render_disposition_table_view(view_name: str, rows: list[dict[str, Any]], is
     return f"""
 <div class="table-view disposition-view{' active' if is_active else ''}" data-tab="disposition" data-view="{htmlescape(view_name)}">
   <table>
-    <thead><tr><th>股票代號</th><th>股票名稱</th><th>分盤時間</th><th>風險天數分析</th><th>處置條件訊息</th></tr></thead>
+    <thead><tr><th>股票代號</th><th>股票名稱</th><th>分盤時間</th><th>狀態 / 風險</th><th>處置條件訊息</th></tr></thead>
     <tbody>{body}</tbody>
   </table>
 </div>
@@ -2063,6 +1845,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     tbody tr:hover {{ background: rgba(148,163,184,0.08); }}
     td.code-cell {{ white-space: nowrap; }}
     td.message-cell {{ white-space: pre-wrap; min-width: 520px; max-width: 760px; }}
+    td.tags-cell {{ white-space: pre-line; min-width: 180px; }}
     .stock-code {{ display: inline-flex; align-items: center; gap: 6px; font-weight: 700; letter-spacing: 0.02em; flex-wrap: wrap; }}
     .group-badge {{ display: inline-flex; align-items: center; border-radius: 999px; padding: 1px 7px; font-size: 11px; font-weight: 700; border: 1px solid transparent; }}
     .session-pill {{ display: inline-flex; align-items: center; min-width: 56px; justify-content: center; border-radius: 999px; padding: 2px 10px; background: rgba(59,130,246,0.16); color: #bfdbfe; border: 1px solid rgba(59,130,246,0.25); font-weight: 700; }}
@@ -2143,6 +1926,29 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
         justify-content: flex-end;
       }}
       .tab-update-date {{ justify-self: stretch; justify-content: flex-end; }}
+    }}
+    /* 手機：篩選卡片三欄精簡版、只凍結第一欄 (兩欄凍結會吃掉整個螢幕) */
+    @media (max-width: 640px) {{
+      .page {{ padding: 14px 10px 28px; }}
+      h1, .site-title {{ font-size: 20px; }}
+      .site-header {{ margin-bottom: 12px; }}
+      .main-tabs {{ gap: 8px; margin-bottom: 12px; }}
+      .main-tab {{ padding: 10px 12px; font-size: 15px; border-radius: 14px; }}
+      .filter-bar {{ grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }}
+      .filter-button {{ padding: 8px 10px; border-radius: 14px; }}
+      .filter-name {{ font-size: 12px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
+      .filter-desc {{ display: none; }}
+      .filter-count {{ font-size: 22px; }}
+      .table-shell {{ border-radius: 14px; }}
+      th, td {{ padding: 6px 6px; }}
+      td {{ font-size: 13px; }}
+      td.code-cell {{ white-space: normal; }}
+      .stock-code {{ max-width: 7.5em; gap: 3px 4px; }}
+      .table-view td:nth-child(2),
+      .table-view th:nth-child(2) {{ position: static; box-shadow: none; background: transparent; }}
+      .table-view th:nth-child(2) {{ background: rgba(2,6,23,0.99); }}
+      td.message-cell {{ min-width: 280px; }}
+      td.tags-cell {{ min-width: 140px; }}
     }}
   </style>
 </head>
