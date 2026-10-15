@@ -1725,22 +1725,22 @@ def render_institutional_table_view(view_name: str, rows: list[dict[str, Any]], 
   <table>
     <thead>
       <tr>
-        {th_cell('股票代號', '76px')}
-        {th_cell('股票名稱', '96px')}
-        {th_cell('外陸資買賣超<br>(不含自營)', '132px')}
-        {th_cell('投信買賣超', '108px')}
-        {th_cell('成交股數', '112px')}
-        {th_cell('開盤', '62px')}
-        {th_cell('最高', '62px')}
-        {th_cell('最低', '62px')}
-        {th_cell('收盤', '62px')}
-        {th_cell('前日收盤', '72px')}
-        {sort_header('開盤幅<br>(%)', 'open_pct', '80px')}
-        {sort_header('漲跌幅<br>(%)', 'change_pct', '80px')}
-        {sort_header('最高幅<br>(%)', 'high_open_pct', '80px')}
-        {sort_header('最低幅<br>(%)', 'low_open_pct', '80px')}
-        {sort_header('外陸資占比<br>(%)', 'foreign_pct', '106px')}
-        {sort_header('投信占比<br>(%)', 'trust_pct', '106px')}
+        {th_cell('股票代號', '64px')}
+        {th_cell('股票名稱', '84px')}
+        {th_cell('外陸資買賣超<br>(不含自營)', '112px')}
+        {th_cell('投信買賣超', '92px')}
+        {th_cell('成交股數', '100px')}
+        {th_cell('開盤', '56px')}
+        {th_cell('最高', '56px')}
+        {th_cell('最低', '56px')}
+        {th_cell('收盤', '56px')}
+        {th_cell('前日收盤', '64px')}
+        {sort_header('開盤幅<br>(%)', 'open_pct', '72px')}
+        {sort_header('漲跌幅<br>(%)', 'change_pct', '72px')}
+        {sort_header('最高幅<br>(%)', 'high_open_pct', '72px')}
+        {sort_header('最低幅<br>(%)', 'low_open_pct', '72px')}
+        {sort_header('外陸資占比<br>(%)', 'foreign_pct', '92px')}
+        {sort_header('投信占比<br>(%)', 'trust_pct', '92px')}
       </tr>
     </thead>
     <tbody>{body}</tbody>
@@ -1955,7 +1955,11 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     :root {{ color-scheme: dark; }}
     * {{ box-sizing: border-box; }}
     body {{
-      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      font-family: "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", "Heiti TC", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
       margin: 0;
       background:
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.10), transparent 30%),
@@ -1963,7 +1967,8 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
         #020617;
       color: #e2e8f0;
     }}
-    .page {{ margin: 0 auto; padding: 28px 24px 48px; }}
+    .page {{ margin: 0 auto; padding: 20px 20px 40px; }}
+    button, input, select, textarea {{ font-family: inherit; }}
     .main-tabs {{
       display: grid;
       grid-template-columns: auto auto 1fr;
@@ -2048,21 +2053,22 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     .table-scroll-top {{ overflow-x: auto; overflow-y: hidden; height: 16px; width: 100%; position: relative; -webkit-overflow-scrolling: touch; }}
     .table-scroll-top-inner {{ height: 1px; }}
     table {{ width: max-content; min-width: 100%; border-collapse: separate; border-spacing: 0; }}
-    th, td {{ border-bottom: 1px solid rgba(148,163,184,0.12); padding: 10px 10px; text-align: left; vertical-align: top; white-space: nowrap; }}
+    th, td {{ border-bottom: 1px solid rgba(148,163,184,0.12); padding: 7px 8px; text-align: left; vertical-align: middle; white-space: nowrap; }}
+    td {{ font-size: 14px; line-height: 1.45; font-variant-numeric: tabular-nums; }}
     th {{ position: sticky; top: 0; z-index: 2; background: rgba(2,6,23,0.99); color: #cbd5e1; font-size: 13px; letter-spacing: 0; text-transform: none; box-shadow: 0 1px 0 rgba(148,163,184,0.28), 0 6px 12px rgba(0,0,0,0.25); }}
     tbody tr {{ transition: background 0.2s ease; }}
     tbody tr:hover {{ background: rgba(148,163,184,0.08); }}
     td.code-cell {{ white-space: nowrap; }}
-    td.message-cell {{ white-space: pre-wrap; min-width: 680px; max-width: 760px; }}
-    .stock-code {{ display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; flex-wrap: wrap; }}
-    .group-badge {{ display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 700; border: 1px solid transparent; }}
-    .session-pill {{ display: inline-flex; align-items: center; min-width: 56px; justify-content: center; border-radius: 999px; padding: 6px 10px; background: rgba(59,130,246,0.16); color: #bfdbfe; border: 1px solid rgba(59,130,246,0.25); font-weight: 700; }}
+    td.message-cell {{ white-space: pre-wrap; min-width: 520px; max-width: 760px; }}
+    .stock-code {{ display: inline-flex; align-items: center; gap: 6px; font-weight: 700; letter-spacing: 0.02em; flex-wrap: wrap; }}
+    .group-badge {{ display: inline-flex; align-items: center; border-radius: 999px; padding: 1px 7px; font-size: 11px; font-weight: 700; border: 1px solid transparent; }}
+    .session-pill {{ display: inline-flex; align-items: center; min-width: 56px; justify-content: center; border-radius: 999px; padding: 2px 10px; background: rgba(59,130,246,0.16); color: #bfdbfe; border: 1px solid rgba(59,130,246,0.25); font-weight: 700; }}
     .session-pill.none {{ background: rgba(148,163,184,0.10); color: #94a3b8; border-color: rgba(148,163,184,0.16); }}
     .risk-text {{ color: #f8fafc; font-weight: 600; }}
     .sortable-header {{
       position: relative;
-      padding-right: 32px !important;
-      min-width: 100px;
+      padding-right: 30px !important;
+      min-width: 84px;
     }}
     /* 表格第一欄 sticky：橫向滾動時，永遠看到股票代號，避免左右滑到最右邊的投信占比時看不到是哪一支股票 */
     .table-view td:nth-child(1),
@@ -2076,7 +2082,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     .table-view td:nth-child(2),
     .table-view th:nth-child(2) {{
       position: sticky;
-      left: 76px;
+      left: var(--col1-width, 76px);
       z-index: 3;
       background: rgba(2,6,23,0.99);
       box-shadow: 2px 0 0 rgba(148,163,184,0.10);
@@ -2124,7 +2130,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     @media (max-width: 900px) {{
       .page {{ padding: 20px 14px 32px; }}
       h1 {{ font-size: 22px; }}
-      th, td {{ padding: 12px 10px; }}
+      th, td {{ padding: 8px 8px; }}
       .main-tabs {{
         grid-template-columns: 1fr 1fr;
       }}
@@ -2253,7 +2259,15 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
       topScroller.addEventListener("scroll", shell._dsTopHandler, {{ passive: true }});
       shell.addEventListener("scroll", shell._dsShellHandler, {{ passive: true }});
     }}
+    // 第二欄 sticky 的 left 依第一欄實際寬度計算 (處置股第一欄的群組標籤數量不固定)
+    function syncStickyColumns() {{
+      document.querySelectorAll(".table-view.active table").forEach((t) => {{
+        const first = t.querySelector("thead th:nth-child(1)");
+        if (first && first.offsetWidth) t.style.setProperty("--col1-width", first.offsetWidth + "px");
+      }});
+    }}
     function refreshDoubleScrollbars(panelKey) {{
+      try {{ syncStickyColumns(); }} catch (e) {{ /* ignore */ }}
       if (panelKey) {{
         const p = document.querySelector(`.main-content-panel[data-main-panel="${{panelKey}}"]`);
         if (p) _setupPanelDoubleScroll(p);
