@@ -19,6 +19,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+SITE_NAME = "一直炭吉無限操盤"
 API_URL = "https://storage.googleapis.com/stockwarden-prod-public/api/boards.json"
 TAIFEX_LIST_URL = "https://www.taifex.com.tw/cht/2/stockLists"
 TWSE_T86_URL = "https://www.twse.com.tw/rwd/zh/fund/T86"
@@ -1941,7 +1942,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     main_tabs = render_main_tabs(pages, page_dates)
     main_panels = render_main_panels(pages, page_results, page_dates)
-    title = " / ".join(p.label for p in sorted(pages, key=lambda x: x.tab_order))
+    title = SITE_NAME
     html_text = f"""<!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -1969,6 +1970,8 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     }}
     .page {{ margin: 0 auto; padding: 20px 20px 40px; }}
     button, input, select, textarea {{ font-family: inherit; }}
+    .site-header {{ margin: 0 0 18px; }}
+    .site-title {{ margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 0.08em; line-height: 1.3; background: linear-gradient(90deg, #fde68a, #f59e0b 55%, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; }}
     .main-tabs {{
       display: grid;
       grid-template-columns: auto auto 1fr;
@@ -2129,7 +2132,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
     .fetch-warnings {{ margin-bottom: 18px; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(251,191,36,0.35); background: rgba(251,191,36,0.10); color: #fde68a; font-size: 13px; line-height: 1.7; }}
     @media (max-width: 900px) {{
       .page {{ padding: 20px 14px 32px; }}
-      h1 {{ font-size: 22px; }}
+      h1, .site-title {{ font-size: 22px; }}
       th, td {{ padding: 8px 8px; }}
       .main-tabs {{
         grid-template-columns: 1fr 1fr;
@@ -2145,6 +2148,7 @@ def save_html_multi(pages: list[PageSpec], page_results: dict[str, list[dict[str
 </head>
 <body>
   <div class="page">
+    <header class="site-header"><h1 class="site-title">{htmlescape(SITE_NAME)}</h1></header>
     <div class="main-tabs">{main_tabs}</div>
     {main_panels}
   </div>
